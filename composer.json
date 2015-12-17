@@ -1,0 +1,21 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Fabric\\": "Fabric/",
+            "Interfaces\\": "Interfaces/",
+            "UploadModels\\": "UploadModels/"
+        }
+    },
+    "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Nickstery/Box-SDK.git"
+    }
+  ],
+    "require": {
+        "golchha21/boxphpapi": "dev-master",
+        "google/apiclient": "^2.0.0@RC",
+        "dropbox/dropbox-sdk": "1.1.*",
+        "vlucas/phpdotenv": "^2.1"
+    }
+}
