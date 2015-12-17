@@ -1,4 +1,7 @@
 {
+  "name": "Nickstery/CloudUploader-SDK",
+  "type": "API",
+  "description": "Nickstery",
     "autoload": {
         "psr-4": {
             "Fabric\\": "Fabric/",
