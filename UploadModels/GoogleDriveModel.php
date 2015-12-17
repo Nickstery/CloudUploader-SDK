@@ -60,6 +60,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
     public static function getToken() {
         $client = self::getGoogleClient();
+
         $client->authenticate($_GET['code']);
         return $client->getAccessToken();
     }
@@ -72,7 +73,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
         $client->setAuthConfigFile($config);
 
-        $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Uploader/public/code.php?type=1');
+        $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/TestProject/code.php?type=1');
         $client->addScope(\Google_Service_Drive::DRIVE);
         return $client;
     }

@@ -4,7 +4,6 @@ namespace Fabric;
 use \Dropbox as dbx;
 
 
-
 class ServiceFabric{
 
     public static function auth($type, $code) {
@@ -23,8 +22,10 @@ class ServiceFabric{
         }elseif($code == 'access_token'){
 
             $result = self::getToken($type);
+
+            $data = array('service' => $type, 'token_data' => $result);
             echo "<script>window.close();</script>";
-            return $result;
+            return $data;
 
         }
 

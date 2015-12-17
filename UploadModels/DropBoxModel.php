@@ -2,19 +2,28 @@
 
 namespace UploadModels;
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+
 use \Dropbox as dbx;
 use Dropbox\Exception;
 
 class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
     public static function auth() {
+        session_start();
         $authorizeUrl = self::getDropBoxAuth()->start();
         header("Location: $authorizeUrl");
     }
 
     public static function getToken() {
+        session_start();
         list($accessToken, $userId, $urlState) = self::getDropBoxAuth()->finish($_GET);
+        //echo $accessToken;
         if (isset($accessToken) && strlen($accessToken) > 0) {
+
             return $accessToken;
         }
         return '';
@@ -59,7 +68,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
         $appInfo = dbx\AppInfo::loadFromJson($data);
         $clientIdentifier = "my-app/1.0";
-        $redirectUri = "http://localhost:63342/Uploader/public/code.php";
+        $redirectUri = "http://localhost:63342/TestProject/code.php";
         $csrfTokenStore = new dbx\ArrayEntryStore($_SESSION, 'dropbox-auth-csrf-token');
         return new dbx\WebAuth($appInfo, $clientIdentifier, $redirectUri, $csrfTokenStore);
     }
