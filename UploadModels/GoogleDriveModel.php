@@ -10,7 +10,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
     }
 
-    public static function uploadFile($access_token, $uploadFile)
+    public static function uploadFile($access_token, $uploadFile, $fileId)
     {
 
         if(!isset($access_token)){
@@ -23,9 +23,14 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
         //Insert a file
         $file = new \Google_Service_Drive_DriveFile();
-        $file->setTitle('test_'.time().'.pdf');
+
+        $fileName = preg_split( "~ (/|.) ~", $uploadFile );
+        $fileName = $fileName[sizeof($fileName) - 2];
+        $fileName .= '_'.$fileId;
+
+        $file->setTitle($fileName.'.pdf');
         $file->setDescription('A test document');
-        $file->setMimeType('text/plain');
+        $file->setMimeType('application/pdf');
 
         $data = file_get_contents($uploadFile);
 
@@ -43,7 +48,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         try {
             $createdFile = $service->files->insert($file, array(
                 'data' => $data,
-                'mimeType' => 'text/plain',
+                'mimeType' => 'application/pdf',
                 'uploadType' => 'resumable'
             ));
         }catch(\Exception $e){
