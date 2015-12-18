@@ -30,11 +30,10 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
     }
 
 
-    public static function uploadFile($access_token) {
+    public static function uploadFile($access_token, $uploadFile) {
         if(!isset($access_token)){
             return array('status' => 'error', 'msg' => 'refreshToken');
         }
-        $uploadFile = "../text.txt";
 
         if(file_exists($uploadFile)) {
 
@@ -42,7 +41,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
             $f = fopen($uploadFile, "rb");
             try {
-                $result = $dbxClient->uploadFile("/PDFFiller/test_" . time() . ".txt", dbx\WriteMode::add(), $f);
+                $result = $dbxClient->uploadFile("/PDFFiller/test_" . time() . ".pdf", dbx\WriteMode::add(), $f);
             }catch(Exception $e){
                 return array('status' => 'error', 'msg' => 'refreshToken');
             }

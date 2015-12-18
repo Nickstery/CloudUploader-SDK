@@ -10,7 +10,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
     }
 
-    public static function uploadFile($access_token)
+    public static function uploadFile($access_token, $uploadFile)
     {
 
         if(!isset($access_token)){
@@ -23,11 +23,11 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
         //Insert a file
         $file = new \Google_Service_Drive_DriveFile();
-        $file->setTitle('test_'.time().'.txt');
+        $file->setTitle('test_'.time().'.pdf');
         $file->setDescription('A test document');
         $file->setMimeType('text/plain');
 
-        $data = file_get_contents('../test.txt');
+        $data = file_get_contents($uploadFile);
 
         $folderInfo = self::getFolder($access_token);
         $id = 0;

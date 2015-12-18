@@ -32,7 +32,7 @@ class ServiceFabric{
     }
 
 
-    public static function uploadFile($type, $access_token) {
+    public static function uploadFile($type, $access_token, $uploadFile) {
 
         $result = array('status' => 'error', 'msg' => 'Wrong service type');
 
@@ -45,19 +45,19 @@ class ServiceFabric{
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\DropBoxModel::uploadFile($access_token);
+                $result = \UploadModels\DropBoxModel::uploadFile($access_token, $uploadFile);
                 break;
             case 1:
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\GoogleDriveModel::uploadFile($access_token);
+                $result = \UploadModels\GoogleDriveModel::uploadFile($access_token, $uploadFile);
                 break;
             case 2:
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\BoxModel::uploadFile($access_token);
+                $result = \UploadModels\BoxModel::uploadFile($access_token, $uploadFile);
                 break;
         }
         return $result;
