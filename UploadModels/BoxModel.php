@@ -18,8 +18,9 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
 
             try{
 
-                $fileName = preg_split( "~ (/|.) ~", $uploadFile );
-                $fileName = $fileName[sizeof($fileName) - 2];
+                $fileName = preg_split( "~[/.]~", $uploadFile );
+                $index = sizeof($fileName);
+                $fileName = $fileName[$index - 2];
                 $fileName .= '_'.$fileId;
 
                 $answer = $box->put_file($uploadFile, $fileName.'.pdf',$res['id'], $access_token);

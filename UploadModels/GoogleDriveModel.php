@@ -24,8 +24,9 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         //Insert a file
         $file = new \Google_Service_Drive_DriveFile();
 
-        $fileName = preg_split( "~ (/|.) ~", $uploadFile );
-        $fileName = $fileName[sizeof($fileName) - 2];
+        $fileName = preg_split( "~[/.]~", $uploadFile );
+        $index = sizeof($fileName);
+        $fileName = $fileName[$index - 2];
         $fileName .= '_'.$fileId;
 
         $file->setTitle($fileName.'.pdf');
