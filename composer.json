@@ -6,7 +6,8 @@
         "psr-4": {
             "Fabric\\": "Fabric/",
             "Interfaces\\": "Interfaces/",
-            "UploadModels\\": "UploadModels/"
+            "UploadModels\\": "UploadModels/",
+            "Apibox\\":"vendor/golchha21/boxphpapi/src"
         }
     },
     "repositories": [
