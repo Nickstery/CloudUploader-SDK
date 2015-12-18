@@ -55,7 +55,7 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
 
     private static function getBox() {
 
-        $dotenv = new \Dotenv\Dotenv(__DIR__.'/..');
+        $dotenv = new \Dotenv\Dotenv('');
         $dotenv->load();
 
         return new \Apibox\Apibox(
