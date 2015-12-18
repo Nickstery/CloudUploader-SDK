@@ -65,7 +65,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
     private static function getDropBoxAuth() {
 
-        $dotenv = new \Dotenv\Dotenv('');
+        $dotenv = new \Dotenv\Dotenv(__DIR__.'/..');
         $dotenv->load();
 
         $data = array('key' => $_ENV['DROPBOX_KEY'], 'secret' => $_ENV['DROPBOX_SECRET']);

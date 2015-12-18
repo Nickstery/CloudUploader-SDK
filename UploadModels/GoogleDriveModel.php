@@ -116,7 +116,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
     public static function getGoogleConfig(){
         $config = array();
 
-        $dotenv = new \Dotenv\Dotenv('');
+        $dotenv = new \Dotenv\Dotenv(__DIR__.'/..');
         $dotenv->load();
 
         $data['client_id'] = $_ENV['GOOGLEDRIVE_CLIENTID'];
