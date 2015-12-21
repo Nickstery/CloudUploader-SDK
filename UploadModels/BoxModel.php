@@ -27,7 +27,7 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
             if(is_array($answer->entries) && sizeof($answer->entries) > 0){
                 return array('status' => 'ok');
             }else{
-                return array('error', 'msg' => 'refreshToken');
+                return array('status' => 'error', 'msg' => 'refreshToken');
             }
 
         } else {

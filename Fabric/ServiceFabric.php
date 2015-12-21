@@ -10,6 +10,7 @@ class ServiceFabric{
         if ($code == 'code') {
             switch ($type) {
                 case 0:
+                    @session_start();
                     \UploadModels\DropBoxModel::auth();
                     break;
                 case 1:
@@ -42,6 +43,7 @@ class ServiceFabric{
 
         switch($type){
             case 0:
+                @session_start();
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
@@ -68,6 +70,7 @@ class ServiceFabric{
         $result = '';
         switch($type){
             case 0:
+                @session_start();
                 $result = \UploadModels\DropBoxModel::getToken();
                 break;
             case 1:
