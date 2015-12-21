@@ -30,7 +30,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
     }
 
 
-    public static function uploadFile($access_token, $uploadFile, $fileId) {
+    public static function uploadFile($access_token, $uploadFile) {
         if(!isset($access_token)){
             return array('status' => 'error', 'msg' => 'refreshToken');
         }
@@ -42,11 +42,8 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
             $f = fopen($uploadFile, "rb");
             try {
 
-                $fileName = preg_split( "~[/.]~", $uploadFile );
-                $index = sizeof($fileName);
-                $fileName = $fileName[$index - 2];
-                $fileName .= '_'.$fileId;
-
+                $tmp = explode('/',$uploadFile);
+                $fileName = $tmp[sizeof($tmp) - 1];
                 $result = $dbxClient->uploadFile("/PDFFiller/". $fileName . ".pdf", dbx\WriteMode::add(), $f);
             }catch(Exception $e){
                 return array('status' => 'error', 'msg' => 'refreshToken');

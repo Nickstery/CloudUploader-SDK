@@ -9,7 +9,7 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
         $box->get_code();
     }
 
-    public static function uploadFile($access_token, $uploadFile, $fileId) {
+    public static function uploadFile($access_token, $uploadFile) {
 
         $box = self::getBox();
         $res = $box->create_folder('PDFFiller', '0',$access_token);
@@ -17,12 +17,8 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
         if ($res['status'] == 'ok') {
 
             try{
-
-                $fileName = preg_split( "~[/.]~", $uploadFile );
-                $index = sizeof($fileName);
-                $fileName = $fileName[$index - 2];
-                $fileName .= '_'.$fileId;
-
+                $tmp = explode('/',$uploadFile);
+                $fileName = $tmp[sizeof($tmp) - 1];
                 $answer = $box->put_file($uploadFile, $fileName.'.pdf',$res['id'], $access_token);
             }catch(\Exception $e){
                 return array('status' => 'error', 'msg' => 'refreshToken');

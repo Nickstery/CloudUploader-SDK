@@ -45,19 +45,19 @@ class ServiceFabric{
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\DropBoxModel::uploadFile($access_token, $uploadFile, $fileId);
+                $result = \UploadModels\DropBoxModel::uploadFile($access_token, $uploadFile);
                 break;
             case 1:
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\GoogleDriveModel::uploadFile($access_token, $uploadFile, $fileId);
+                $result = \UploadModels\GoogleDriveModel::uploadFile($access_token, $uploadFile);
                 break;
             case 2:
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\BoxModel::uploadFile($access_token, $uploadFile, $fileId);
+                $result = \UploadModels\BoxModel::uploadFile($access_token, $uploadFile);
                 break;
         }
         return $result;
