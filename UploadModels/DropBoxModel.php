@@ -28,7 +28,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
     public static function uploadFile($access_token, $uploadFile) {
         if(!isset($access_token)){
-            return array('status' => 'error', 'msg' => 'refreshToken');
+            return array('status' => 'error', 'msg' => 'refreshToken', 'uel' => self::auth());
         }
 
         if(file_exists($uploadFile)) {

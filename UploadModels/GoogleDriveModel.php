@@ -36,7 +36,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         if($folderInfo['status'] === 'ok'){
             $id = $folderInfo['id'];
         }else{
-            return array('status' => 'error', 'msg' => 'refreshToken');
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth());
         }
         $parent = new \Google_Service_Drive_ParentReference();
         $parent->setId($id);
@@ -49,13 +49,13 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
                 'uploadType' => 'resumable'
             ));
         }catch(\Exception $e){
-            return array('status' => 'error', 'msg' => 'refreshToken');
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth());
         }
 
         if(isset($createdFile) && isset($createdFile['id']) && strlen($createdFile['id']) > 0){
             return array('status' => 'ok');
         }else{
-            return array('status' => 'error', 'msg' => 'refreshToken');
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth());
         }
     }
 

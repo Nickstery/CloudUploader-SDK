@@ -21,17 +21,17 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
                 $fileName = $tmp[sizeof($tmp) - 1];
                 $answer = $box->put_file($uploadFile, $fileName.'.pdf',$res['id'], $access_token);
             }catch(\Exception $e){
-                return array('status' => 'error', 'msg' => 'refreshToken');
+                return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth());
             }
 
             if(is_array($answer->entries) && sizeof($answer->entries) > 0){
                 return array('status' => 'ok');
             }else{
-                return array('status' => 'error', 'msg' => 'refreshToken');
+                return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth());
             }
 
         } else {
-            return array('status' => 'error', 'msg' => 'refreshToken');
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth());
         }
     }
 

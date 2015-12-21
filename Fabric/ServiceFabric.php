@@ -31,7 +31,7 @@ class ServiceFabric{
     }
 
 
-    public static function uploadFile($type, $access_token, $uploadFile, $fileId) {
+    public static function uploadFile($type, $access_token, $uploadFile) {
 
         $result = array('status' => 'error', 'msg' => 'Wrong service type');
 
