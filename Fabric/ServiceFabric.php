@@ -11,21 +11,19 @@ class ServiceFabric{
             switch ($type) {
                 case 0:
                     @session_start();
-                    \UploadModels\DropBoxModel::auth();
+                    return \UploadModels\DropBoxModel::auth();
                     break;
                 case 1:
-                    \UploadModels\GoogleDriveModel::auth();
+                    return \UploadModels\GoogleDriveModel::auth();
                     break;
                 case 2:
-                    \UploadModels\BoxModel::auth();
+                    return \UploadModels\BoxModel::auth();
                     break;
             }
         }elseif($code == 'access_token'){
 
             $result = self::getToken($type);
-
             $data = array('service' => $type, 'token_data' => $result);
-            echo "<script>window.close();</script>";
             return $data;
 
         }

@@ -6,7 +6,7 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
 
     public static function auth() {
         $box = self::getBox();
-        $box->get_code();
+        return $box->get_code();
     }
 
     public static function uploadFile($access_token, $uploadFile) {

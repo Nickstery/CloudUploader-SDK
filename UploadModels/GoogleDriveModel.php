@@ -7,7 +7,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
     {
         $client = self::getGoogleClient();
         $auth_url = $client->createAuthUrl();
-        header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
+        return filter_var($auth_url, FILTER_SANITIZE_URL);
     }
 
     public static function uploadFile($access_token, $uploadFile)

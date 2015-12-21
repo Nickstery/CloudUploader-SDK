@@ -11,7 +11,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
     public static function auth() {
         session_start();
         $authorizeUrl = self::getDropBoxAuth()->start();
-        header("Location: $authorizeUrl");
+        return $authorizeUrl;
     }
 
     public static function getToken() {
