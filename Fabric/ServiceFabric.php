@@ -64,6 +64,7 @@ class ServiceFabric{
     }
 
     public static function getToken($type){
+
         $result = '';
         switch($type){
             case 0:
@@ -78,4 +79,5 @@ class ServiceFabric{
         }
         return $result;
     }
+
 }
