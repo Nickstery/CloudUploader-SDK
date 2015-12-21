@@ -17,7 +17,7 @@
     }
   ],
     "require": {
-        "golchha21/boxphpapi": "@dev",
+        "golchha21/boxphpapi": "dev-master",
         "google/apiclient": "v2.0.0-RC1",
         "dropbox/dropbox-sdk": "1.1.*",
         "vlucas/phpdotenv": "^2.1"
