@@ -5,9 +5,9 @@ use Psr\Log\InvalidArgumentException;
 
 class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
-    public static function auth($state, $config)
-    {
+    public static function auth($state, $config) {
         $client = self::getGoogleClient($config);
+        $client->setState($state);
         $auth_url = $client->createAuthUrl();
         return filter_var($auth_url, FILTER_SANITIZE_URL);
     }
