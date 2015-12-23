@@ -1,8 +1,6 @@
 <?php
 namespace UploadModels;
 
-
-use HttpReceiver\HttpRecieiver;
 use Psr\Log\InvalidArgumentException;
 
 class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
@@ -20,13 +18,13 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
             return;
         }
 
-
+        $userId = \HttpReceiver\HttpReceiver::get('userId', 'string');
         $client = self::getGoogleClient($config);
         try {
             $client->setAccessToken($access_token);
         }catch (\InvalidArgumentException $e){
-            $userId = HttpRecieiver::get('userId', 'string');
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['userId'], $config));
+
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
         }
 
         $service = new \Google_Service_Drive($client);
@@ -47,12 +45,12 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
         $data = file_get_contents($uploadFile);
 
-        $folderInfo = self::getFolder($access_token);
+        $folderInfo = self::getFolder($access_token, $config);
         $id = 0;
         if($folderInfo['status'] === 'ok'){
             $id = $folderInfo['id'];
         }else{
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['userId'], $config));
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
         }
         $parent = new \Google_Service_Drive_ParentReference();
         $parent->setId($id);
@@ -65,13 +63,13 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
                 'uploadType' => 'resumable'
             ));
         }catch(\Exception $e){
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['userId'], $config));
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
         }
 
         if(isset($createdFile) && isset($createdFile['id']) && strlen($createdFile['id']) > 0){
             return array('status' => 'ok');
         }else{
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['userId'], $config));
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
         }
     }
 
@@ -79,8 +77,8 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
     public static function getToken($config) {
 
         $client = self::getGoogleClient($config);
-        $code = HttpRecieiver::get('code','string');
-        $client->authenticate($_GET['code']);
+        $code = \HttpReceiver\HttpReceiver::get('code','string');
+        $client->authenticate($code);
         return $client->getAccessToken();
 
     }
@@ -92,10 +90,10 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
         $client->setAuthConfigFile($config);
 
-        $userId = HttpRecieiver::get('userId', 'int');
+        $userId = \HttpReceiver\HttpReceiver::get('userId', 'int');
 
         if(!isset($userId)){
-            $userId = HttpRecieiver::get('state', 'int');
+            $userId = \HttpReceiver\HttpReceiver::get('state', 'int');
         }
 
         $client->setRedirectUri($config['GOOGLEDRIVE_REDIRECT2']);
@@ -103,8 +101,8 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         return $client;
     }
 
-    private static function getFolder($access_token) {
-        $client = self::getGoogleClient();
+    private static function getFolder($access_token, $config) {
+        $client = self::getGoogleClient($config);
         $client->setAccessToken($access_token);
         $service = new \Google_Service_Drive($client);
 

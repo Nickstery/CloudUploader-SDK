@@ -2,9 +2,6 @@
 
 namespace UploadModels;
 
-
-use HttpReceiver\HttpRecieiver;
-
 class BoxModel implements \Interfaces\UploadServiceInterface {
 
     public static function auth($state,$config) {
@@ -18,9 +15,9 @@ class BoxModel implements \Interfaces\UploadServiceInterface {
 
         $box = self::getBox($config);
         $res = $box->create_folder($config['SAVE_FOLDER'], '0',$access_token);
-        $userId = HttpRecieiver::get('state','int');
+        $userId = \HttpReceiver\HttpReceiver::get('state','int');
         if(!isset($userId) || strlen($userId) == 0){
-            $userId = HttpRecieiver::get('userId','int');
+            $userId = \HttpReceiver\HttpReceiver::get('userId','int');
         }
 
         if ($res['status'] == 'ok') {
@@ -55,7 +52,7 @@ class BoxModel implements \Interfaces\UploadServiceInterface {
         if(!empty($box->refresh_token)) {
             $params = array('grant_type' => 'refresh_token', 'refresh_token' => $box->refresh_token, 'client_id' => $box->client_id, 'client_secret' => $box->client_secret);
         } else {
-            $params = array('grant_type' => 'authorization_code', 'code' => HttpRecieiver::get('code','string'), 'client_id' => $box->client_id, 'client_secret' => $box->client_secret);
+            $params = array('grant_type' => 'authorization_code', 'code' => \HttpReceiver\HttpReceiver::get('code','string'), 'client_id' => $box->client_id, 'client_secret' => $box->client_secret);
         }
 
         $data = json_decode($box->post($url, $params), true);

@@ -11,7 +11,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
     public static function auth($state, $config) {
 
-        $authorizeUrl = self::getDropBoxAuth($config)->start(HttpRecieiver::get('userId','string'));
+        $authorizeUrl = self::getDropBoxAuth($config)->start(\HttpReceiver\HttpReceiver::get('userId','string'));
         return $authorizeUrl;
     }
 
@@ -30,7 +30,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
     public static function uploadFile($access_token, $uploadFile, $fileName, $config) {
         if(!isset($access_token)){
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth(HttpRecieiver::get('userId','int'), $config));
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth(\HttpReceiver\HttpReceiver::get('userId','int'), $config));
         }
 
         if(!file_exists($uploadFile)) {
@@ -52,7 +52,7 @@ class DropBoxModel implements \Interfaces\UploadServiceInterface{
 
             $result = $dbxClient->uploadFile("/".$config['SAVE_FOLDER']."/". $fileName, dbx\WriteMode::add(), $f);
         }catch(Exception $e){
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth(HttpRecieiver::get('userId','int'), $config));
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth(\HttpReceiver\HttpReceiver::get('userId','int'), $config));
         }
 
         fclose($f);
