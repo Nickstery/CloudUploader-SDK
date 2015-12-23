@@ -1,7 +1,6 @@
 <?php
 
 namespace HttpReceiver;
-use \Dropbox as dbx;
 
 class HttpReceiver{
 
