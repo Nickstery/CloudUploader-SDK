@@ -2,6 +2,7 @@
 namespace UploadModels;
 
 
+use HttpReceiver\HttpRecieiver;
 use Psr\Log\InvalidArgumentException;
 
 class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
@@ -77,6 +78,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
     public static function getToken($config) {
 
         $client = self::getGoogleClient($config);
+        $code = HttpRecieiver::get('code','string');
         $client->authenticate($_GET['code']);
         return $client->getAccessToken();
 
@@ -89,14 +91,13 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
 
         $client->setAuthConfigFile($config);
 
-        if(isset($_REQUEST['userId'])){
-            $client->setState($_REQUEST['userId']);
-        }else{
-            $client->setState($_REQUEST['state']);
+        $userId = HttpRecieiver::get('userId', 'int');
+
+        if(!isset($userId)){
+            $userId = HttpRecieiver::get('state', 'int');
         }
 
-
-        $client->setRedirectUri('https://local.pdffiller.com/en/cloud_export/callback?type=1');
+        $client->setRedirectUri($config['GOOGLEDRIVE_REDIRECT2']);
         $client->addScope(\Google_Service_Drive::DRIVE);
         return $client;
     }

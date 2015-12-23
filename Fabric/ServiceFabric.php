@@ -2,6 +2,8 @@
 
 namespace Fabric;
 use \Dropbox as dbx;
+use HttpReceiver\HttpRecieiver;
+
 @session_start();
 
 class ServiceFabric{
@@ -11,21 +13,20 @@ class ServiceFabric{
         if ($code == 'code') {
             switch ($type) {
                 case 0:
-                    $data = $_REQUEST['userId'];
-
+                    $data = HttpRecieiver::get('userId','int');
                     return \UploadModels\DropBoxModel::auth($data,$config);
                     break;
                 case 1:
-                    $data = $_REQUEST['userId'];
+                    $data = HttpRecieiver::get('userId','int');
                     return \UploadModels\GoogleDriveModel::auth($data,$config);
                     break;
                 case 2:
-                    $data = $_REQUEST['userId'];
+                    $data = HttpRecieiver::get('userId','int');
                     return \UploadModels\BoxModel::auth($data,$config);
                     break;
             }
         }elseif($code == 'access_token'){
-            $result = self::getToken($type);
+            $result = self::getToken($type, $config);
             $data = array('service' => $type, 'token_data' => $result);
             return $data;
 

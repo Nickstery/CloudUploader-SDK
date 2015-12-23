@@ -4,6 +4,7 @@
   "description": "Nickstery",
     "autoload": {
         "psr-4": {
+            "HttpReceiver\\": "HttpReceiver/",
             "Fabric\\": "Fabric/",
             "Interfaces\\": "Interfaces/",
             "UploadModels\\": "UploadModels/",

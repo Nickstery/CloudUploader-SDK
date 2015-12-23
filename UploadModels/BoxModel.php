@@ -2,23 +2,27 @@
 
 namespace UploadModels;
 
-class BoxModel implements \Interfaces\UploadServiceInterface{
+
+use HttpReceiver\HttpRecieiver;
+
+class BoxModel implements \Interfaces\UploadServiceInterface {
 
     public static function auth($state,$config) {
         $box = self::getBox($config);
-        return $box->get_code($state);
+        $url = $box->get_code();
+        $url .= '&state='.$state;
+        return $url;
     }
 
     public static function uploadFile($access_token, $uploadFile, $fileName, $config) {
 
         $box = self::getBox($config);
-        $res = $box->create_folder('PDFFiller', '0',$access_token);
-        $userId = '';
-        if(isset($_REQUEST['state'])){
-            $userId = $_REQUEST['state'];
-        }elseif(isset($_REQUEST['userId'])){
-            $userId = $_REQUEST['userId'];
+        $res = $box->create_folder($config['SAVE_FOLDER'], '0',$access_token);
+        $userId = HttpRecieiver::get('state','int');
+        if(!isset($userId) || strlen($userId) == 0){
+            $userId = HttpRecieiver::get('userId','int');
         }
+
         if ($res['status'] == 'ok') {
 
             try{
@@ -28,17 +32,17 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
                 }
                 $answer = $box->put_file($uploadFile, $fileName.'_'.time().'.pdf',$res['id'], $access_token);
             }catch(\Exception $e){
-                return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['state'], $config));
+                return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
             }
 
             if(is_array($answer->entries) && sizeof($answer->entries) > 0){
                 return array('status' => 'ok');
             }else{
-                return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['state'], $config));
+                return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
             }
 
         } else {
-            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['state'], $config));
+            return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
         }
     }
 
@@ -51,7 +55,7 @@ class BoxModel implements \Interfaces\UploadServiceInterface{
         if(!empty($box->refresh_token)) {
             $params = array('grant_type' => 'refresh_token', 'refresh_token' => $box->refresh_token, 'client_id' => $box->client_id, 'client_secret' => $box->client_secret);
         } else {
-            $params = array('grant_type' => 'authorization_code', 'code' => $_REQUEST['code'], 'client_id' => $box->client_id, 'client_secret' => $box->client_secret);
+            $params = array('grant_type' => 'authorization_code', 'code' => HttpRecieiver::get('code','string'), 'client_id' => $box->client_id, 'client_secret' => $box->client_secret);
         }
 
         $data = json_decode($box->post($url, $params), true);
