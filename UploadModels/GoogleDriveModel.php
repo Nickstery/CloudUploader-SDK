@@ -25,6 +25,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         try {
             $client->setAccessToken($access_token);
         }catch (\InvalidArgumentException $e){
+            $userId = HttpRecieiver::get('userId', 'string');
             return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($_REQUEST['userId'], $config));
         }
 
