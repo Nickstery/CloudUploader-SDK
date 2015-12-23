@@ -3,7 +3,7 @@
 namespace HttpReceiver;
 use \Dropbox as dbx;
 
-class HttpRecieiver{
+class HttpReceiver{
 
     public static function get($name, $type){
 
