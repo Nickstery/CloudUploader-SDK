@@ -45,19 +45,35 @@ class ServiceFabric{
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\DropBoxModel::uploadFile($access_token, $uploadFile, $fileName, $config);
+                $result = array();
+                try {
+                    $result = \UploadModels\DropBoxModel::uploadFile($access_token, $uploadFile, $fileName, $config);
+                }catch (dbx\Exception $e){
+                    $result = array('status' => 'error', 'msg' => 'Cloud Error');
+                }
                 break;
             case 1:
+                $result = array();
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\GoogleDriveModel::uploadFile($access_token, $uploadFile, $fileName, $config);
+                try {
+                    $result = \UploadModels\GoogleDriveModel::uploadFile($access_token, $uploadFile, $fileName,
+                        $config);
+                }catch(\Exception $e){
+                    $result = array('status' => 'error', 'msg' => 'Cloud Error');
+                }
                 break;
             case 2:
                 if(!isset($access_token)) {
                     return array('status' => 'error', 'msg' => 'deniedByUser');
                 }
-                $result = \UploadModels\BoxModel::uploadFile($access_token, $uploadFile, $fileName, $config);
+                $result = array();
+                try {
+                    $result = \UploadModels\BoxModel::uploadFile($access_token, $uploadFile, $fileName, $config);
+                } catch(\Exception $e){
+                    $result = array('status' => 'error', 'msg' => 'Cloud Error');
+                }
                 break;
         }
         return $result;
