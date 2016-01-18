@@ -19,7 +19,7 @@
   ],
     "require": {
         "golchha21/boxphpapi": "dev-master",
-        "google/apiclient": "dev-add-support-for-guzzle-6",
+        "google/apiclient": "v2.0.0-rc4",
         "dropbox/dropbox-sdk": "1.1.*",
         "vlucas/phpdotenv": "^2.1"
     }

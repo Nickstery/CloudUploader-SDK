@@ -295,59 +295,6 @@
         ]
     },
     {
-        "name": "vlucas/phpdotenv",
-        "version": "v2.1.0",
-        "version_normalized": "2.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/vlucas/phpdotenv.git",
-            "reference": "c10040e0df17d2ee88e9212b50cbe9319e878f59"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/c10040e0df17d2ee88e9212b50cbe9319e878f59",
-            "reference": "c10040e0df17d2ee88e9212b50cbe9319e878f59",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2015-10-28 18:53:35",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Dotenv\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD"
-        ],
-        "authors": [
-            {
-                "name": "Vance Lucas",
-                "email": "vance@vancelucas.com",
-                "homepage": "http://www.vancelucas.com"
-            }
-        ],
-        "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-        "homepage": "http://github.com/vlucas/phpdotenv",
-        "keywords": [
-            "dotenv",
-            "env",
-            "environment"
-        ]
-    },
-    {
         "name": "golchha21/boxphpapi",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -672,17 +619,17 @@
     },
     {
         "name": "google/apiclient",
-        "version": "dev-add-support-for-guzzle-6",
-        "version_normalized": "dev-add-support-for-guzzle-6",
+        "version": "v2.0.0-RC4",
+        "version_normalized": "2.0.0.0-RC4",
         "source": {
             "type": "git",
             "url": "https://github.com/google/google-api-php-client.git",
-            "reference": "c5c687e4626d9adaab0ce7a33593b4c2f6fa9d5f"
+            "reference": "5620e578b495942a3b60eb99e2f0c1aeca23fbed"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/c5c687e4626d9adaab0ce7a33593b4c2f6fa9d5f",
-            "reference": "c5c687e4626d9adaab0ce7a33593b4c2f6fa9d5f",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/5620e578b495942a3b60eb99e2f0c1aeca23fbed",
+            "reference": "5620e578b495942a3b60eb99e2f0c1aeca23fbed",
             "shasum": ""
         },
         "require": {
@@ -701,7 +648,7 @@
             "symfony/css-selector": "~2.0",
             "symfony/dom-crawler": "~2.0"
         },
-        "time": "2015-12-23 00:37:42",
+        "time": "2015-12-28 18:50:26",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -725,6 +672,59 @@
         "homepage": "http://developers.google.com/api-client-library/php",
         "keywords": [
             "google"
+        ]
+    },
+    {
+        "name": "vlucas/phpdotenv",
+        "version": "v2.2.0",
+        "version_normalized": "2.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/vlucas/phpdotenv.git",
+            "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/9caf304153dc2288e4970caec6f1f3b3bc205412",
+            "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8|^5.0"
+        },
+        "time": "2015-12-29 15:10:30",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Dotenv\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Vance Lucas",
+                "email": "vance@vancelucas.com",
+                "homepage": "http://www.vancelucas.com"
+            }
+        ],
+        "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+        "homepage": "http://github.com/vlucas/phpdotenv",
+        "keywords": [
+            "dotenv",
+            "env",
+            "environment"
         ]
     }
 ]
