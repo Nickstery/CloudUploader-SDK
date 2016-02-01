@@ -8,9 +8,9 @@ class HttpReceiver{
 
         switch($type){
             case 'int':
-                return intval($_GET[$name]);
+                return intval($_REQUEST[$name]);
             case 'string':
-                return htmlspecialchars(strip_tags($_GET[$name]));
+                return htmlspecialchars(strip_tags($_REQUEST[$name]));
         }
         return '';
     }
