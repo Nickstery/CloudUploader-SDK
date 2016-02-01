@@ -41,52 +41,6 @@
         ]
     },
     {
-        "name": "golchha21/boxphpapi",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Nickstery/Box-SDK.git",
-            "reference": "74b5711aed20fe3a0f53fa43e6081692b839cc40"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Nickstery/Box-SDK/zipball/74b5711aed20fe3a0f53fa43e6081692b839cc40",
-            "reference": "74b5711aed20fe3a0f53fa43e6081692b839cc40",
-            "shasum": ""
-        },
-        "time": "2015-12-16 17:57:37",
-        "type": "api",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Apibox\\": "src/"
-            }
-        },
-        "license": [
-            "Apache License 2.0"
-        ],
-        "authors": [
-            {
-                "name": "Ulhas Vardhan Golchha",
-                "homepage": "http://www.ulhas.net/",
-                "role": "Developer"
-            }
-        ],
-        "description": "Unofficial BoxPHPAPI v2",
-        "homepage": "http://www.ulhas.net/GitHub/BoxPHPAPI/",
-        "keywords": [
-            "API",
-            "Box",
-            "BoxAPI",
-            "PHP"
-        ],
-        "support": {
-            "issues": "https://github.com/golchha21/BoxPHPAPI/issues",
-            "source": "https://github.com/golchha21/BoxPHPAPI"
-        }
-    },
-    {
         "name": "psr/http-message",
         "version": "1.0",
         "version_normalized": "1.0.0.0",
@@ -770,5 +724,51 @@
             "php",
             "sdk"
         ]
+    },
+    {
+        "name": "golchha21/boxphpapi",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Nickstery/Box-SDK.git",
+            "reference": "e8245e024c0c30bf11af87f6bcbd2cbeb00f2bc5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Nickstery/Box-SDK/zipball/e8245e024c0c30bf11af87f6bcbd2cbeb00f2bc5",
+            "reference": "e8245e024c0c30bf11af87f6bcbd2cbeb00f2bc5",
+            "shasum": ""
+        },
+        "time": "2016-02-01 18:24:07",
+        "type": "api",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Apibox\\": "src/"
+            }
+        },
+        "license": [
+            "Apache License 2.0"
+        ],
+        "authors": [
+            {
+                "name": "Ulhas Vardhan Golchha",
+                "homepage": "http://www.ulhas.net/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Unofficial BoxPHPAPI v2",
+        "homepage": "http://www.ulhas.net/GitHub/BoxPHPAPI/",
+        "keywords": [
+            "API",
+            "Box",
+            "BoxAPI",
+            "PHP"
+        ],
+        "support": {
+            "issues": "https://github.com/golchha21/BoxPHPAPI/issues",
+            "source": "https://github.com/golchha21/BoxPHPAPI"
+        }
     }
 ]

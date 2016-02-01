@@ -14,7 +14,8 @@ class BoxModel implements \Interfaces\UploadServiceInterface {
     public static function uploadFile($access_token, $uploadFile, $fileName, $config) {
 
         $box = self::getBox($config);
-        $res = $box->create_folder($config['SAVE_FOLDER'], '0',$access_token);
+        $box->access_token = $access_token;
+        $res = $box->create_folder($config['SAVE_FOLDER'], '0', $access_token);
         $userId = \HttpReceiver\HttpReceiver::get('state','int');
         if(!isset($userId) || strlen($userId) == 0){
             $userId = \HttpReceiver\HttpReceiver::get('userId','int');
