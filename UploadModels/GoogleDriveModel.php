@@ -21,6 +21,7 @@ class GoogleDriveModel implements \Interfaces\UploadServiceInterface {
         $userId = \HttpReceiver\HttpReceiver::get('userId', 'string');
         $client = self::getGoogleClient($config);
         try {
+            $access_token = (array)$access_token;
             $client->setAccessToken($access_token);
         }catch (\InvalidArgumentException $e){
 
