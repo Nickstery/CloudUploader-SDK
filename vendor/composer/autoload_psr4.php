@@ -10,6 +10,7 @@ return array(
     'UploadModels\\' => array($baseDir . '/UploadModels'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Krizalys\\Onedrive\\' => array($vendorDir . '/krizalys/onedrive-php-sdk/src/Krizalys/Onedrive'),
     'Interfaces\\' => array($baseDir . '/Interfaces'),
     'HttpReceiver\\' => array($baseDir . '/HttpReceiver'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),

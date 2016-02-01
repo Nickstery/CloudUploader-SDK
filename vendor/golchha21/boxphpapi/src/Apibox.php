@@ -31,7 +31,8 @@ class Apibox {
 		} else {
 			// echo $url = $this->authorize_url . '?' . http_build_query(array('response_type' => 'code', 'client_id' => $this->client_id, 'redirect_uri' => $this->redirect_uri));
 			$url = $this->authorize_url . '?' . http_build_query(array('response_type' => 'code', 'client_id' => $this->client_id, 'redirect_uri' => $this->redirect_uri));
-			return $url;
+			header('location: ' . $url);
+			exit();
 		}
 	}
 
@@ -125,8 +126,8 @@ class Apibox {
 		return array_filter($return);
 	}
 
-	public function create_folder($name, $parent_id, $access_token) {
-		$url = @$this->build_url("/folders", array('access_token' => $access_token));
+	public function create_folder($name, $parent_id) {
+		$url = @$this->build_url("/folders", array('access_token' => $_SESSION['user']['box']['access_token']));
 		$params = array('name' => $name, 'parent' => array('id' => $parent_id));
 
 		$result = json_decode($this->post($url, json_encode($params)), true);
@@ -179,15 +180,29 @@ class Apibox {
 	}
 
 	/* Uploads a file */
-	public function put_file($filename, $name ,$parent_id, $access_token) {
+	public function put_file($filename, $name ,$parent_id) {
+		/*$url = $this->build_url('/files/content', array(), $this->upload_url);
+        if(isset($name)){
+            $name = basename($filename);
+        }
+
+
+
+        $params = array('filename' => "@" . realpath($filename), 'name' => $name , 'parent_id' =>  $parent_id, 'access_token' => $_SESSION['user']['box']['access_token']);
+        print_r($url);
+        print_r($params);
+        echo json_decode($this->post($url, $params), true);*/
 
 		$path = realpath($filename);
+		$token = $_SESSION['user']['box']['access_token'];
 		$cmd = "curl https://upload.box.com/api/2.0/files/content \
--H \"Authorization: Bearer $access_token\" -X POST \
+-H \"Authorization: Bearer $token\" -X POST \
 -F attributes='{\"name\":\"$name\",\"parent\": {\"id\":\"$parent_id\"}}' \
 -F file=@\"$path\"";
 
 		return json_decode(shell_exec($cmd));
+
+
 	}
 
 	/* Modifies the file details as per the api */
