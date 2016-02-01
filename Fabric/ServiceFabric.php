@@ -21,6 +21,10 @@ class ServiceFabric{
                     $data = \HttpReceiver\HttpReceiver::get('userId','int');
                     return \UploadModels\BoxModel::auth($data,$config);
                     break;
+                case 3:
+                    $data = \HttpReceiver\HttpReceiver::get('userId','int');
+                    return \UploadModels\OneDriveModel::auth($data,$config);
+                    break;
             }
         }elseif($code == 'access_token'){
             $result = self::getToken($type, $config);
