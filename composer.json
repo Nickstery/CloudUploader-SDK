@@ -18,6 +18,7 @@
     }
   ],
     "require": {
+        "krizalys/onedrive-php-sdk": "1.0.0",
         "golchha21/boxphpapi": "dev-master",
         "google/apiclient": "v2.0.0-rc4",
         "dropbox/dropbox-sdk": "1.1.*",

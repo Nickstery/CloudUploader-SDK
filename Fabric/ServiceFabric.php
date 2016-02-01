@@ -75,6 +75,17 @@ class ServiceFabric{
                     $result = array('status' => 'error', 'msg' => 'Cloud Error');
                 }
                 break;
+            case 3:
+                if(!isset($access_token)) {
+                    return array('status' => 'error', 'msg' => 'deniedByUser');
+                }
+                $result = array();
+                try {
+                    $result = \UploadModels\OneDriveModel::uploadFile($access_token, $uploadFile, $fileName, $config);
+                } catch(\Exception $e){
+                    $result = array('status' => 'error', 'msg' => 'Cloud Error');
+                }
+                break;
         }
         return $result;
     }
@@ -91,6 +102,9 @@ class ServiceFabric{
                 break;
             case 2:
                 $result = \UploadModels\BoxModel::getToken($config);
+                break;
+            case 3:
+                $result = \UploadModels\OneDriveModel::getToken($config);
                 break;
         }
         return $result;
