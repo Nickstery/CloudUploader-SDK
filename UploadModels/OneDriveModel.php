@@ -2,7 +2,6 @@
 namespace UploadModels;
 
 use Krizalys\Onedrive\Client;
-use Psr\Log\InvalidArgumentException;
 
 class OneDriveModel implements \Interfaces\UploadServiceInterface {
 
@@ -31,7 +30,7 @@ class OneDriveModel implements \Interfaces\UploadServiceInterface {
 
         if (!isset($fileName) || strlen($fileName) == 0 || $fileName == '0') {
             $tmp = explode('/', $uploadFile);
-            $fileName = $tmp[sizeof($tmp) - 1];
+            $fileName = time().'_'.$tmp[sizeof($tmp) - 1];
         }else{
             $fileName .= '.pdf';
         }
@@ -44,6 +43,8 @@ class OneDriveModel implements \Interfaces\UploadServiceInterface {
         $client = self::getOneDriveClient($config, $array);
         $parent      = $client->fetchObject($folderId);
         $file        = $parent->createFile($fileName, file_get_contents($uploadFile));
+        print_r($file);
+        die();
         return array('status' => 'error', 'msg' => 'refreshToken', 'url' => self::auth($userId, $config));
     }
 
