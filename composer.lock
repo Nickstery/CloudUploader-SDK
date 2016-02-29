@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1fe3e632bf99e746945426f0b9c78897",
-    "content-hash": "51a9c97c4918e3419e326f0c3de015d7",
+    "hash": "b87a0b7b1d990219f58ca8f80773e827",
+    "content-hash": "a497361883a4764cea3b03743f49b04a",
     "packages": [
         {
             "name": "dropbox/dropbox-sdk",
@@ -88,50 +88,6 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2015-07-22 18:31:08"
-        },
-        {
-            "name": "golchha21/boxphpapi",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nickstery/Box-SDK.git",
-                "reference": "e8245e024c0c30bf11af87f6bcbd2cbeb00f2bc5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nickstery/Box-SDK/zipball/e8245e024c0c30bf11af87f6bcbd2cbeb00f2bc5",
-                "reference": "e8245e024c0c30bf11af87f6bcbd2cbeb00f2bc5",
-                "shasum": ""
-            },
-            "type": "api",
-            "autoload": {
-                "psr-4": {
-                    "Apibox\\": "src/"
-                }
-            },
-            "license": [
-                "Apache License 2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Ulhas Vardhan Golchha",
-                    "homepage": "http://www.ulhas.net/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Unofficial BoxPHPAPI v2",
-            "homepage": "http://www.ulhas.net/GitHub/BoxPHPAPI/",
-            "keywords": [
-                "API",
-                "Box",
-                "BoxAPI",
-                "PHP"
-            ],
-            "support": {
-                "issues": "https://github.com/golchha21/BoxPHPAPI/issues",
-                "source": "https://github.com/golchha21/BoxPHPAPI"
-            },
-            "time": "2016-02-01 18:24:07"
         },
         {
             "name": "google/apiclient",
@@ -350,16 +306,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb"
+                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5d04bdd2881ac89abde1fb78cc234bce24327bb",
-                "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
+                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
                 "shasum": ""
             },
             "require": {
@@ -404,7 +360,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-01-23 01:23:02"
+            "time": "2016-02-18 21:54:00"
         },
         {
             "name": "krizalys/onedrive-php-sdk",
@@ -523,6 +479,36 @@
                 "psr-3"
             ],
             "time": "2015-10-14 12:51:02"
+        },
+        {
+            "name": "nikitash/boxphpapi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://gitlab.pdffiller.com/nickstery/Box-SDK.git",
+                "reference": "7c1077565f953f82a0bf4cfd7347745980a4aeb6"
+            },
+            "type": "api",
+            "autoload": {
+                "psr-4": {
+                    "Apibox\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Ulhas Vardhan Golchha",
+                    "homepage": "http://www.ulhas.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Unofficial BoxPHPAPI v2",
+            "keywords": [
+                "API",
+                "Box",
+                "BoxAPI",
+                "PHP"
+            ],
+            "time": "2016-02-25 09:11:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -699,64 +685,13 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
-        },
-        {
-            "name": "vlucas/phpdotenv",
-            "version": "v2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/9caf304153dc2288e4970caec6f1f3b3bc205412",
-                "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dotenv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "homepage": "http://github.com/vlucas/phpdotenv",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "time": "2015-12-29 15:10:30"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "golchha21/boxphpapi": 20,
+        "nikitash/boxphpapi": 20,
         "google/apiclient": 5
     },
     "prefer-stable": false,

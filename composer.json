@@ -12,16 +12,15 @@
         }
     },
     "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Nickstery/Box-SDK.git"
-    }
+      {
+        "type": "vcs",
+        "url": "http://gitlab.pdffiller.com/nickstery/Box-SDK.git"
+      }
   ],
     "require": {
         "krizalys/onedrive-php-sdk": "1.0.0",
-        "golchha21/boxphpapi": "dev-master",
+        "nikitash/boxphpapi": "dev-master",
         "google/apiclient": "v2.0.0-rc4",
-        "dropbox/dropbox-sdk": "1.1.*",
-        "vlucas/phpdotenv": "^2.1"
+        "dropbox/dropbox-sdk": "1.1.*"
     }
 }
